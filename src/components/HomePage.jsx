@@ -14,9 +14,12 @@ import portfolioIndian   from '../assets/portfolio-indian.jpg'
 import portfolioBeach    from '../assets/portfolio-beach.jpg'
 import portfolioVineyard from '../assets/portfolio-vineyard.jpg'
 import portfolioSunset   from '../assets/portfolio-sunset.jpg'
+import heroVideo from '../assets/hero-drone.mp4'
 
 // Drop your hosted .mp4 URL here to re-enable the hero video
-const HERO_VIDEO_URL = ''
+const HERO_VIDEO_URL = '../assets/hero-drone.mp4';
+
+
 
 export default function HomePage() {
   return (
@@ -27,7 +30,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           {HERO_VIDEO_URL ? (
             <video
-              src={HERO_VIDEO_URL}
+              src={heroVideo}
               poster={heroDrone}
               autoPlay
               loop
