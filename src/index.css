@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.99 0.003 75);
+  --foreground: oklch(0.16 0.01 55);
+  --card: oklch(0.99 0.003 75);
+  --card-foreground: oklch(0.16 0.01 55);
+  --muted: oklch(0.94 0.005 75);
+  --muted-foreground: oklch(0.55 0.02 55);
+  --accent: oklch(0.68 0.05 65);
+  --accent-foreground: oklch(0.99 0.003 75);
+  --border: oklch(0.16 0.01 55 / 8%);
+  --input: oklch(0.16 0.01 55 / 8%);
+  --ring: oklch(0.68 0.05 65);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  }
+}
+
+/* ── Tailwind CSS variable utility shims ────────────────────────────── */
+/* These let the original Tailwind class names (bg-background, text-foreground,
+   text-accent, border-border, text-muted-foreground, bg-accent) resolve via
+   CSS variables exactly as in the Lovable source. */
+
+.bg-background  { background-color: var(--background) !important; }
+.bg-accent      { background-color: var(--accent) !important; }
+.text-foreground    { color: var(--foreground) !important; }
+.text-muted-foreground { color: var(--muted-foreground) !important; }
+.text-accent        { color: var(--accent) !important; }
+.border-border      { border-color: var(--border) !important; }
+.hover\:text-accent:hover   { color: var(--accent) !important; }
+.hover\:border-accent:hover { border-color: var(--accent) !important; }
+.hover\:bg-accent:hover     { background-color: var(--accent) !important; }
+
+/* Opacity variants used in the source */
+.text-foreground\/70  { color: oklch(0.16 0.01 55 / 70%) !important; }
+.text-foreground\/90  { color: oklch(0.16 0.01 55 / 90%) !important; }
+.border-foreground\/20 { border-color: oklch(0.16 0.01 55 / 20%) !important; }
+.hover\:bg-foreground:hover { background-color: var(--foreground) !important; }
+.hover\:text-background:hover { color: var(--background) !important; }
+.bg-foreground { background-color: var(--foreground) !important; }
+.text-background { color: var(--background) !important; }
+.border-foreground { border-color: var(--foreground) !important; }
+.border-foreground\/15 { border-color: oklch(0.16 0.01 55 / 15%) !important; }
+.border-border\/50 { border-color: oklch(0.16 0.01 55 / 4%) !important; }
+.bg-background\/90 { background-color: oklch(0.99 0.003 75 / 90%) !important; }
+.hover\:border-accent\/40:hover { border-color: oklch(0.68 0.05 65 / 40%) !important; }
+.hover\:border-accent\/50:hover { border-color: oklch(0.68 0.05 65 / 50%) !important; }
+.hover\:border-accent\/30:hover { border-color: oklch(0.68 0.05 65 / 30%) !important; }
+.bg-accent\/5 { background-color: oklch(0.68 0.05 65 / 5%) !important; }
+.selection\:bg-accent\/20 *::selection { background-color: oklch(0.68 0.05 65 / 20%); }
+
+/* ── Custom animations ──────────────────────────────────────────────── */
+@keyframes hero-zoom {
+  0%   { transform: scale(1) translate(0, 0); }
+  50%  { transform: scale(1.08) translate(-1%, -0.5%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scroll-line {
+  0%    { transform: scaleY(0); transform-origin: top; }
+  50%   { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform: scaleY(1); transform-origin: bottom; }
+  100%  { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.animate-hero-zoom   { animation: hero-zoom 20s ease-in-out infinite; }
+.animate-fade-up     { animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in     { animation: fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-scroll-line { animation: scroll-line 2s ease-in-out infinite; }
+
+/* ── Scrollbar hide ─────────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Smooth scroll ──────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
